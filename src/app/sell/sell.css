@@ -1,0 +1,36 @@
+.page {
+  display: flex;
+}
+.myPage {
+  display: flex;
+  flex: 1;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.menuMyInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuShopInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.myPageMenu {
+  flex: 1;
+}
+
+.myPageInfo {
+  flex: 1;
+  margin-left: -60%;
+}

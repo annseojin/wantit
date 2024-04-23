@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 스크롤바 안 보이게 하기 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 헤더 상단에 고정 */
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
