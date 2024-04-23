@@ -102,11 +102,11 @@ const ChatArea: React.FC<ChatAreaProps> = ({
                     className="w-10 h-10 rounded-full"
                   />
                 )}
-                <div className="flex flex-col w-1/2">
+                <div className="flex flex-col">
                   <span className="text-sm font-semibold">
                     {message.sender !== 'user' ? message.name : ''}
                   </span>
-                  <span className="block max-w-full px-4 py-2 shadow rounded-lg break-words overflow-hidden">
+                  <span className="block max-w-72 px-4 py-2 shadow rounded-lg break-words overflow-hidden">
                     {message.text}
                     {message.imageUrl && (
                       <img
