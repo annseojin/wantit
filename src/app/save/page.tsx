@@ -1,6 +1,4 @@
 'use client'
-
-import Banner from '@/components/banner'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -134,8 +132,8 @@ export default function Page() {
             >
               <button
                 className="absolute right-1 top-1 p-2 
-      bg-gray-200 rounded-lg hover:bg-red-400 
-      hover:text-white duration-200"
+              bg-gray-200 rounded-lg hover:bg-red-400 
+              hover:text-white duration-200"
                 onClick={handleCloseProduct}
               >
                 <svg
@@ -153,9 +151,12 @@ export default function Page() {
                   />
                 </svg>
               </button>
-              <img
+
+              <Image
                 src={selectedProduct.imageUrl}
                 alt={selectedProduct.name}
+                width={100}
+                height={100}
                 className="w-24 h-auto object-contain"
               />
               <div className="text-center mt-2">

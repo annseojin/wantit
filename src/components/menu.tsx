@@ -1,3 +1,5 @@
+'use client'
+
 import { useRouter } from 'next/navigation'
 import Search from './search'
 import Image from 'next/image'
@@ -29,16 +31,16 @@ export default function Menu() {
           />
         </div>
         <menu className="flex gap-6 absolute left-1/2 -translate-x-1/2">
-          <Link href="/product/전체" className="font-bold text-lg">
+          <Link href="/product" className="font-bold text-lg">
             전체
           </Link>
-          <Link href="/product/의류" className="text-lg">
+          <Link href="/product/clothes" className="text-lg">
             의류
           </Link>
-          <Link href="/product/교재" className="text-lg">
+          <Link href="/product/books" className="text-lg">
             교재
           </Link>
-          <Link href="/product/기타" className="text-lg">
+          <Link href="/product/others" className="text-lg">
             기타
           </Link>
         </menu>

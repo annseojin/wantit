@@ -1,19 +1,35 @@
 'use client'
 
 import Menu from '@/components/menu'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from '@/components/modal'
 import PageButton from '@/components/pageButton'
-import { useSearchParams } from 'next/navigation'
 import ProductList from '@/components/productList'
-import { Product, products } from '../../hooks/product'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { Product, products } from '../../../hooks/product'
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const searchParams = useSearchParams()
   const search = searchParams.get('q')
+  const path = usePathname().split('/').pop()
+
+  // 동적 라우팅 주소랑 카테고리와 값을 비교해서 상품 띄우고
+  // 쿼리값을 받아서 타이틀에 포함되면 해당 상품 목록 띄우기
+  useEffect(() => {
+    if (path) {
+      const filtered = search
+        ? products
+            .filter((product) => product.title.includes(search))
+            .filter((product) => product.category === path)
+        : products.filter((product) => product.category === path)
+      setFilteredProducts(filtered)
+    } else {
+      setFilteredProducts(products)
+    }
+  }, [path, search])
 
   const handleSaveClick = (product: Product) => {
     setSelectedProduct(product)
@@ -24,10 +40,6 @@ export default function Page() {
     setIsModalOpen(false)
     setSelectedProduct(null)
   }
-
-  const filteredProducts = products.filter(
-    (product) => search === null || product.title.includes(search)
-  )
 
   return (
     <div className="bg-white">

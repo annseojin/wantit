@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Search() {
   const router = useRouter()
-
+  const path = usePathname()
   const [inputValue, setInputValue] = useState('')
 
   const handleChange = (e: any) => {
@@ -12,7 +12,12 @@ export default function Search() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    router.push(`/product?q=${inputValue}`)
+    if (path === '/product') {
+      router.push(`/product?q=${inputValue}`)
+    } else if (path.startsWith('/product/')) {
+      const categoryName = path.split('/').pop()
+      router.push(`/product/${categoryName}?q=${inputValue}`)
+    }
     setInputValue('')
   }
 
@@ -30,7 +35,6 @@ export default function Search() {
               placeholder="상품명 검색"
               value={inputValue}
               onChange={handleChange}
-              required
             />
             <button
               type="submit"

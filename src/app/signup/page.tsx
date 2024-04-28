@@ -21,7 +21,7 @@ const Page: React.FC = () => {
     setPhoneNumber(formattedInput)
   }
 
-  // 전화번호 중간에 - 추가
+  // 전화번호 중간에 "-" 추가
   const formatPhoneNumber = (input: string): string => {
     if (input.length > 3) {
       input = input.slice(0, 3) + '-' + input.slice(3)
@@ -55,16 +55,14 @@ const Page: React.FC = () => {
     const password2 = document.getElementById('password2') as HTMLInputElement
     const passwordMatch = password1.value === password2.value
 
-    //비밀번호 유효성
+    //비밀번호 유효성 조건
     const isPasswordValid =
-      password1.value.length >= 10 &&
-      /\d/.test(password1.value) &&
-      /[a-zA-Z]/.test(password1.value) &&
-      /[!@#$%^&*(),.?":{}|<>]/.test(password1.value)
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#.~_-])[A-Za-z\d@$!%*?&#.~_-]{10,20}$/.test(
+        password1.value
+      )
 
     //전화번호 유효성
-
-    const isTelValid = phoneNumber.length === 13
+    const isTelValid = /^010-\d{4}-\d{4}$/.test(phoneNumber)
 
     // 팝오버 갱신
     const updatePopover = (popoverName: string, value: boolean) => {
@@ -104,7 +102,7 @@ const Page: React.FC = () => {
       return
     }
 
-    // 전화번호 유효성 확인(길이)
+    // 전화번호 유효성 확인
     if (!isTelValid) {
       updatePopover('telPopover', true)
       return

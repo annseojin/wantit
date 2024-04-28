@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import {
   Link,
   MemoryRouter,
@@ -13,6 +13,7 @@ function Content() {
   const location = useLocation()
   const query = new URLSearchParams(location.search)
   const page = parseInt(query.get('page') || '1', 10)
+
   return (
     <div className="flex justify-center py-8 border-2">
       <Pagination

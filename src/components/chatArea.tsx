@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import MessageModal from './messageModal'
+import Image from 'next/image'
 
 interface ChatAreaProps {
   messages: Message[]
@@ -141,9 +142,9 @@ const ChatArea: React.FC<ChatAreaProps> = ({
             />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="p-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="p-2 mr-2 bg-gray-500 text-white rounded hover:bg-gray-600"
             >
-              📎
+              <Image src="/img.png" alt="사진" width={20} height={20} />
             </button>
             <input
               type="text"

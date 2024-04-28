@@ -37,7 +37,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product }) => {
             data-modal-hide="popup-modal"
             onClick={onClose}
           >
-            <Image src={'close.svg'} alt="닫기" width={12} height={12} />
+            <Image src="/close.svg" alt="닫기" width={12} height={12} />
             <span className="sr-only">Close modal</span>
           </button>
           <div className="p-4 md:p-5 text-center">
