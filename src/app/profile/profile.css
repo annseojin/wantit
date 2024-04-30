@@ -1,9 +1,22 @@
-.page {
-  display: flex;
-}
+/* 공통 - 프로필 */
 .myPage {
+  box-sizing: border-box;
   display: flex;
   flex: 1;
+  flex-direction: column;
+}
+
+.myPage::after {
+  content: '';
+  display: block;
+  width: 85%;
+  height: 2px; /* 줄의 높이 조정 */
+  background-color: #ccc; /* 회색 줄의 색상 */
+  margin: 5px auto 15px auto; /* 원하는 간격으로 조정 */
+}
+
+.myPageH1 {
+  margin: 50px 50px 50px 150px;
 }
 
 .profile {
@@ -11,26 +24,91 @@
   align-items: center;
 }
 
-.name {
-  margin-left: 50px;
-  margin-top: 25px;
+.basicProfile {
+  margin: auto 50px 50px 150px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.nameCon {
+  display: flex;
+  align-items: center;
+  margin-top: -50px;
+  margin-left: 15px;
+}
+
+.editProfile {
+  font-size: 16px;
+  color: #666;
+  margin: 22px auto auto 15px;
+}
+
+/* 공통 - 메뉴*/
+.page {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - 150px);
+  width: 85%;
+}
+
+.myPageMenu {
+  flex: 1;
+  margin-left: 150px;
 }
 
 .menuMyInfo {
   display: flex;
   flex-direction: column;
+  margin-top: -10px;
 }
 
 .menuShopInfo {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
-.myPageMenu {
-  flex: 1;
+.profileInfo {
+  width: 70%;
+  padding: 5%;
 }
 
-.myPageInfo {
-  flex: 1;
-  margin-left: -60%;
+.profileInfo form {
+  display: grid;
+  gap: 10px;
+}
+
+.profileInfo form label {
+  font-weight: bold;
+}
+
+.profileInfo form input[type='text'],
+.profileInfo form input[type='password'],
+.profileInfo form input[type='email'] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.profileInfo form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: grey;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profileInfo form button:hover {
+  background-color: #616161; /* gray-700 색상 코드 ? */
+}
+
+.editInfo {
+  margin-top: 65px;
 }

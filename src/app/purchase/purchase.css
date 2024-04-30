@@ -1,9 +1,21 @@
-.page {
-  display: flex;
-}
+/* 공통 - 프로필 */
 .myPage {
   display: flex;
   flex: 1;
+  flex-direction: column;
+}
+
+.myPage::after {
+  content: '';
+  display: block;
+  width: 85%;
+  height: 2px; /* 줄의 높이 조정 */
+  background-color: #ccc; /* 회색 줄의 색상 */
+  margin: 5px auto 15px auto; /* 원하는 간격으로 조정 */
+}
+
+.myPageH1 {
+  margin: 50px 50px 50px 150px;
 }
 
 .profile {
@@ -11,26 +23,138 @@
   align-items: center;
 }
 
-.name {
-  margin-left: 50px;
-  margin-top: 25px;
+.basicProfile {
+  margin: auto 50px 50px 150px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.nameCon {
+  display: flex;
+  align-items: center;
+  margin-top: -50px;
+  margin-left: 15px;
+}
+
+.editProfile {
+  font-size: 16px;
+  color: #666;
+  margin: 22px auto auto 15px;
+}
+
+/* 공통 - 메뉴*/
+.page {
+  display: flex;
+  width: 85%;
+}
+
+.myPageMenu {
+  flex: 1;
+  margin-left: 150px;
 }
 
 .menuMyInfo {
   display: flex;
   flex-direction: column;
+  margin-top: -10px;
 }
 
 .menuShopInfo {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
-.myPageMenu {
+/* 구매 내역 */
+.purchase {
+  margin-top: 20px;
+  top: 2%;
+  overflow: auto;
+  max-height: 80dvh;
+}
+
+.tab-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  background: #f0f0f0;
+}
+
+.tab-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 300px;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tabLine {
+  border-left: 2px solid #ccc; /* 세로 줄의 스타일과 색상 설정 */
+  height: 45px; /* 세로 줄의 높이 설정 */
+  margin: 0 15px; /* 좌우 여백 설정 */
+  display: inline-block;
+}
+
+.purchaseList {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+}
+
+.purchaseInfo {
+  display: flex;
+  align-items: center;
   flex: 1;
 }
 
-.myPageInfo {
-  flex: 1;
-  margin-left: -60%;
+.productExp {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.purchaseName {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.purchaseDate {
+  margin-left: auto;
+  font-size: 14px;
+  color: #666;
+  width: 25%;
+  text-align: center;
+}
+
+.shipping {
+  width: 25%;
+  text-align: center;
+  color: gray;
+}
+
+.purchaseInfo img {
+  margin-right: 20px;
+  height: 100px;
 }

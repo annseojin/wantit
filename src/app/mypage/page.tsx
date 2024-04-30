@@ -31,7 +31,7 @@ const BasicProfile = () => {
   return (
     <div>
       <div className="myPage">
-        <h1 className="text-3xl font-bold">My Page</h1>
+        <h1 className="myPageH1 text-3xl font-bold">My Page</h1>
         <div className="profile">
           <Image
             src="/profile.jpg"
@@ -40,7 +40,12 @@ const BasicProfile = () => {
             height={150}
             className="basicProfile object-cover mt-10"
           />
-          <b className="name text-5xl">이름</b>
+          <div className="nameCon">
+            <b className="name text-5xl">{profile.name}</b>
+            <Link href="/profile" className="editProfile">
+              프로필 수정
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -51,7 +56,7 @@ const BasicProfile = () => {
               내 정보
             </Link>
             <Link href="/profile" className="mb-2">
-              프로필 관리
+              프로필 수정
             </Link>
           </div>
           <div className="menuShopInfo">
@@ -68,11 +73,12 @@ const BasicProfile = () => {
           </div>
         </div>
 
-        <div>
-          <h2>회원 정보</h2>
+        <div className="profileInfo">
           <form>
+            {' '}
+            <h2 className="text-2xl font-bold mb-6">회원 정보</h2>
             <div>
-              <label>아이디 : </label>
+              <label>아이디</label>
               <input
                 type="text"
                 name="id"
@@ -81,7 +87,7 @@ const BasicProfile = () => {
               />
             </div>
             <div>
-              <label>비밀번호 : </label>
+              <label>비밀번호</label>
               <input
                 type="password"
                 name="password"
@@ -90,7 +96,7 @@ const BasicProfile = () => {
               />
             </div>
             <div>
-              <label>이름 : </label>
+              <label>이름</label>
               <input
                 type="text"
                 name="name"
@@ -99,7 +105,7 @@ const BasicProfile = () => {
               />
             </div>
             <div>
-              <label>이메일 : </label>
+              <label>이메일</label>
               <input
                 type="email"
                 name="email"
@@ -108,16 +114,13 @@ const BasicProfile = () => {
               />
             </div>
             <div>
-              <label>휴대전화 : </label>
+              <label>휴대전화</label>
               <input
                 type="text"
                 value={profile.phonenumber}
                 onChange={handleProfileChange}
               />
             </div>
-            <button type="button" onClick={saveProfile}>
-              저장
-            </button>
           </form>
         </div>
       </div>
