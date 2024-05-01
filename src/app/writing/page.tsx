@@ -1,6 +1,7 @@
 'use client'
 import { useState, FormEvent, useRef, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Page() {
   const [images, setImages] = useState<string[]>([])
@@ -113,20 +114,20 @@ export default function Page() {
               />
             </div>
             <div className="flex justify-end gap-4">
-              <button
-                type="reset"
+              <Link
+                href="/product"
                 className="py-2 px-6 bg-gray-200
               hover:bg-gray-300 duration-300 rounded"
               >
                 취소
-              </button>
-              <button
-                type="submit"
+              </Link>
+              <Link
+                href="/product"
                 className="py-2 px-6 bg-gray-500 text-white rounded
                 hover:bg-gray-600 duration-300"
               >
                 저장
-              </button>
+              </Link>
             </div>
           </form>
         </div>

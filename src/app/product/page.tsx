@@ -7,6 +7,7 @@ import PageButton from '@/components/pageButton'
 import { useSearchParams } from 'next/navigation'
 import ProductList from '@/components/productList'
 import { Product, products } from '../../hooks/product'
+import Link from 'next/link'
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -39,6 +40,16 @@ export default function Page() {
             ? '상품 목록'
             : `"${search}" 검색 결과`}
         </h2>
+        <div className=" w-full max-w-5xl text-right pb-8">
+          <Link
+            href="/writing"
+            className="
+            text-white font-semibold hover:bg-gray-500
+            rounded-md bg-gray-400 py-3 px-4"
+          >
+            글쓰기
+          </Link>
+        </div>
 
         <ProductList
           products={filteredProducts}

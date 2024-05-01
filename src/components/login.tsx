@@ -131,7 +131,10 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       자동 로그인
                     </label>
                   </div>
-                  <a href="#" className="text-sm text-blue-700 hover:underline">
+                  <a
+                    href="/forgot"
+                    className="text-sm text-blue-700 hover:underline"
+                  >
                     비밀번호를 잃어버리셨나요?
                   </a>
                 </div>
