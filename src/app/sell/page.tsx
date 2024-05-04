@@ -26,7 +26,7 @@ const Sell = () => {
   }, [])
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#f6f7f3' }}>
       <div className="myPage">
         <h1 className="myPageH1 text-3xl font-bold">My Page</h1>
         <div className="profile">

@@ -74,7 +74,6 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                   />
                 </svg>
-                <span className="sr-only">Close modal</span>
               </button>
             </div>
 
@@ -118,6 +117,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
+                        style={{ accentColor: '#497649' }}
                         id="remember"
                         type="checkbox"
                         value=""
@@ -133,14 +133,14 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   </div>
                   <a
                     href="/forgot"
-                    className="text-sm text-blue-700 hover:underline"
+                    className="text-sm text-green-800 hover:underline"
                   >
                     비밀번호를 잃어버리셨나요?
                   </a>
                 </div>
                 <button
                   type="submit"
-                  className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-full text-white btn-color1 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   로그인
                 </button>
@@ -149,7 +149,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   <button
                     type="submit"
                     className="justify-center flex
-                    w-full text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    w-full text-white btn-color2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     <img
                       src="/everytime.png"

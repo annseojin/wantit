@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Product } from '@/hooks/product'
+import { Product } from '@/hooks/hooks'
 
 interface ProductListProps {
   products: Product[]
@@ -49,8 +49,7 @@ const ProductList: React.FC<ProductListProps> = ({
                 onClick={() => handleSaveClick(product)}
                 className="mt-1 text-sm font-semibold 
                     text-white text-center
-                    bg-slate-600 rounded-lg
-                    hover:bg-slate-800 
+                    btn-color1 rounded-lg
                     cursor-pointer"
               >
                 {product.save}

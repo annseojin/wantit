@@ -29,7 +29,7 @@ const BasicProfile = () => {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#f6f7f3' }}>
       <div className="myPage">
         <h1 className="myPageH1 text-3xl font-bold">My Page</h1>
         <div className="profile">
@@ -76,7 +76,7 @@ const BasicProfile = () => {
         <div className="profileInfo">
           <form>
             {' '}
-            <h2 className="text-2xl font-bold mb-6">회원 정보</h2>
+            <h2 className="text-2xl font-bold mb-6 editinfo">회원 정보</h2>
             <div>
               <label>아이디</label>
               <input

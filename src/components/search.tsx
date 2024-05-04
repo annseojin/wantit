@@ -39,8 +39,8 @@ export default function Search() {
             <button
               type="submit"
               className="absolute top-0 end-0 p-2.5 text-sm font-medium 
-              h-full text-white bg-slate-600 rounded-e-lg 
-              border hover:bg-slate-700 "
+              h-full text-white btn-color1 rounded-e-lg 
+              border"
             >
               <img className="w-4 h-4" src="/magnifier.png" alt="돋보기" />
             </button>

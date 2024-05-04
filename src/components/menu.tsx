@@ -37,10 +37,10 @@ export default function Menu() {
           <Link href="/product/clothes" className="text-lg">
             의류
           </Link>
-          <Link href="/product/books" className="text-lg">
+          <Link href="/product/book" className="text-lg">
             교재
           </Link>
-          <Link href="/product/others" className="text-lg">
+          <Link href="/product/other" className="text-lg">
             기타
           </Link>
         </menu>

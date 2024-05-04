@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <nav
       className="sticky flex justify-between items-center 
-    bg-black/90 px-8 py-4"
+     px-8 py-4 header-color"
     >
       <Link
         href="/"

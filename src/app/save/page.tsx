@@ -52,9 +52,9 @@ export default function Page() {
 
   return (
     <main className="md:flex-row min-h-screen ">
-      <div className="py-24 bg-gray-800"></div>
+      <div className="py-24 banner-color"></div>
       <div className="p-12 max-w-7xl mx-auto flex">
-        <div className="flex flex-col w-3/4 bg-white p-6 gap-y-6">
+        <div className="flex flex-col w-3/4 p-6 gap-y-6">
           <div className="w-auto h-12 whitespace-nowrap text-[2rem] leading-[2.75rem]">
             찜목록
             <hr className="my-6" />

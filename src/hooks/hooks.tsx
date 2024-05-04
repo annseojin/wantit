@@ -11,6 +11,15 @@ export interface Product {
   category: string
 }
 
+export interface Message {
+  id: number
+  text: string
+  sender: string
+  name: string
+  profileImg: string
+  imageUrl?: string
+}
+
 export const products: Product[] = [
   {
     title: '하얀 반팔티 팝니다',
@@ -42,7 +51,7 @@ export const products: Product[] = [
     imageAlt: '책',
     price: '10,000원',
     save: '찜하기',
-    category: 'books',
+    category: 'book',
   },
   {
     title: '회색 반팔티 팝니다',
@@ -63,7 +72,7 @@ export const products: Product[] = [
     imageAlt: '정처기',
     price: '5,000원',
     save: '찜하기',
-    category: 'books',
+    category: 'book',
   },
   {
     title: '테스트용1',
@@ -73,7 +82,7 @@ export const products: Product[] = [
     imageAlt: '기타1',
     price: '5,000원',
     save: '찜하기',
-    category: 'others',
+    category: 'other',
   },
   {
     title: '테스트용2',
@@ -83,6 +92,6 @@ export const products: Product[] = [
     imageAlt: '기타2',
     price: '5,000원',
     save: '찜하기',
-    category: 'others',
+    category: 'other',
   },
 ]

@@ -22,8 +22,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="mx-auto">
           <Navbar />
-          <div className=""></div>
-          <div className="mx-auto">{children}</div>
+          <div></div>
+          <div className="mx-auto bg-color">{children}</div>
         </div>
         <UpButton />
         <Footer />

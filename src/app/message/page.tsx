@@ -81,7 +81,7 @@ const ChatPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-100 h-screen flex max-w-7xl mx-auto">
+    <div className="bg-color h-screen flex max-w-7xl mx-auto">
       <LeftSidebar handleLeaveRoom={handleLeaveRoom} />
       <ChatArea
         messages={messages}

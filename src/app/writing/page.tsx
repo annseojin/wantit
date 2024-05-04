@@ -46,7 +46,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-color">
         <div className="container mx-auto">
           <header className="flex justify-between items-center pb-6"></header>
           <form
@@ -55,6 +55,14 @@ export default function Page() {
           >
             <div className="mb-4">
               <div className="flex gap-2 my-8 max-h-10">
+                <button
+                  type="button"
+                  className="p-1 border rounded btn-color1
+                  duration-200 px-4 py-2 ml-4"
+                  onClick={handleImageUpload}
+                >
+                  <Image src="/img.png" alt="이미지" width={20} height={20} />
+                </button>
                 {images.map((src) => (
                   <div className="group relative">
                     <Image
@@ -79,14 +87,6 @@ export default function Page() {
                     </button>
                   </div>
                 ))}
-                <button
-                  type="button"
-                  className="p-1 border rounded bg-gray-400 ml-auto
-                  hover:bg-gray-600 duration-200 px-4 mr-4"
-                  onClick={handleImageUpload}
-                >
-                  <Image src="/img.png" alt="이미지" width={20} height={20} />
-                </button>
 
                 <input
                   type="file"
@@ -96,35 +96,53 @@ export default function Page() {
                   accept="image/*"
                 />
               </div>
+            </div>
 
+            <div className="text-right">
               <input
-                className="w-full p-4 border-y border-gray-200"
                 type="text"
-                placeholder="제목 작성하기"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                name="price"
+                className="p-2 border-y border-gray-200 text-right"
+                placeholder="가격을 입력하세요."
               />
             </div>
 
+            <div className="relative py-2">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+              <input
+                type="text"
+                name="title"
+                className="w-full p-4 border-y border-gray-200"
+                placeholder="제목을 입력하세요."
+              />
+
+              <div className="absolute inset-y-0 right-0 flex items-center">
+                <select className="h-1/2 border-l-2 px-4 text-gray-400 font-medium text-sm">
+                  <option selected>카테고리</option>
+                  <option value="clothes">의류</option>
+                  <option value="book">교재</option>
+                  <option value="other">기타</option>
+                </select>
+              </div>
+            </div>
             <div className="mb-4">
               <div
                 ref={contentRef}
                 contentEditable
-                className="w-full p-4 border-y-2 border-gray-200 min-h-80"
+                className="p-4 border-b-2 border-gray-200 min-h-80"
               />
             </div>
             <div className="flex justify-end gap-4">
               <Link
                 href="/product"
-                className="py-2 px-6 bg-gray-200
-              hover:bg-gray-300 duration-300 rounded"
+                className="py-2 px-6 btn-color1 text-white duration-300 rounded"
               >
                 취소
               </Link>
               <Link
                 href="/product"
-                className="py-2 px-6 bg-gray-500 text-white rounded
-                hover:bg-gray-600 duration-300"
+                className="py-2 px-6 btn-color2 text-white rounded
+                 duration-300"
               >
                 저장
               </Link>

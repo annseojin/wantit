@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import MessageModal from './messageModal'
 import Image from 'next/image'
+import { Message } from '@/hooks/hooks'
 
 interface ChatAreaProps {
   messages: Message[]
@@ -10,15 +11,6 @@ interface ChatAreaProps {
   setInput: (input: string) => void
   isInitialLoad: boolean
   deleteMessage: (id: number) => void
-}
-
-interface Message {
-  id: number
-  text: string
-  sender: string
-  name: string
-  profileImg: string
-  imageUrl?: string
 }
 
 const ChatArea: React.FC<ChatAreaProps> = ({
@@ -38,6 +30,8 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   )
   const [showFileModal, setShowFileModal] = useState<boolean>(false)
   const [fileToUpload, setFileToUpload] = useState<File | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [selectedImage, setSelectedImage] = useState<string>('')
 
   useEffect(() => {
     if (!isInitialLoad) {
@@ -83,6 +77,15 @@ const ChatArea: React.FC<ChatAreaProps> = ({
       }, 0)
     }
   }
+
+  const openImageModal = (imageUrl: string) => {
+    setSelectedImage(imageUrl)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
   return (
     <>
       <div className="flex-1 p-4">
@@ -110,23 +113,60 @@ const ChatArea: React.FC<ChatAreaProps> = ({
                   <span className="block max-w-72 px-4 py-2 shadow rounded-lg break-words overflow-hidden">
                     {message.text}
                     {message.imageUrl && (
-                      <img
-                        src={message.imageUrl}
-                        alt={message.imageUrl}
-                        className="max-w-xs mt-2"
-                      />
+                      <div onClick={() => openImageModal(message.imageUrl!)}>
+                        <Image
+                          src={message.imageUrl}
+                          alt={message.imageUrl}
+                          width={100}
+                          height={100}
+                          className="mt-2 w-40 h-40 cursor-pointer"
+                        />
+                      </div>
                     )}
                   </span>
-                  <button
-                    onClick={() => {
-                      setSelectedMessageId(message.id)
-                      setShowDeleteModal(true)
-                    }}
-                    className={`mt-2 text-red-500 hover:text-red-700
-                    ${message.sender === 'user' ? 'text-right' : 'text-left'}`}
-                  >
-                    X
-                  </button>
+
+                  {/* 보낸 시간 및 삭제 버튼 배치 */}
+                  <div className="flex justify-between items-center">
+                    {message.sender !== 'user' ? (
+                      <>
+                        <button
+                          onClick={() => {
+                            setSelectedMessageId(message.id)
+                            setShowDeleteModal(true)
+                          }}
+                          className="text-red-500 hover:text-red-700 text-right"
+                        >
+                          X
+                        </button>
+                        <span className="text-xs text-gray-400">
+                          {new Date().toLocaleTimeString('ko-KR', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false,
+                          })}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-xs text-gray-400">
+                          {new Date().toLocaleTimeString('ko-KR', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false,
+                          })}
+                        </span>
+                        <button
+                          onClick={() => {
+                            setSelectedMessageId(message.id)
+                            setShowDeleteModal(true)
+                          }}
+                          className="text-red-500 hover:text-red-700 text-left"
+                        >
+                          X
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -142,7 +182,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
             />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="p-2 mr-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              className="p-2 mr-2 btn-color1 text-white rounded"
             >
               <Image src="/img.png" alt="사진" width={20} height={20} />
             </button>
@@ -157,7 +197,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
             />
             <button
               onClick={handleSendMessage}
-              className="ml-2 p-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+              className="ml-2 p-2 btn-color2 text-white rounded"
             >
               &#x27A4;
             </button>
@@ -176,6 +216,22 @@ const ChatArea: React.FC<ChatAreaProps> = ({
         message="파일을 전송하겠습니까?"
         actionLabel="전송"
       />
+
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+          onClick={closeModal} // 모달 배경 클릭 시 모달 닫기
+        >
+          <div className="bg-white p-4 rounded max-w-sm max-h-full overflow-auto">
+            <Image
+              src={selectedImage}
+              layout="fill"
+              alt="Selected"
+              className="object-contain z-40 p-6"
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }

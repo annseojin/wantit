@@ -4,6 +4,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  background-color: #dfe3d4;
 }
 
 .myPage::after {
@@ -11,7 +12,7 @@
   display: block;
   width: 85%;
   height: 2px; /* 줄의 높이 조정 */
-  background-color: #ccc; /* 회색 줄의 색상 */
+  background-color: #849360; /* 회색 줄의 색상 */
   margin: 5px auto 15px auto; /* 원하는 간격으로 조정 */
 }
 

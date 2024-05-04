@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 interface ModalProps {
   isOpen: boolean
   onClose: () => void
-  product: string | any
+  product: any
 }
 
 // 속성값 전달 받기
@@ -22,58 +22,90 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product }) => {
     }
   }, [isOpen])
 
+  // 데이터 전송 테스트
+  const handleSaveProduct = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/product', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(product),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        console.log('Product saved successfully!')
+        onClose()
+      } else {
+        console.log('Error saving product: ' + data.message)
+      }
+    } catch (error) {
+      console.error('Error saving product:', error)
+    }
+  }
+
   if (!isOpen) return null
 
   return (
-    <div
-      id="popup-modal"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50"
-    >
-      <div className="relative p-4 w-full max-w-md max-h-full">
-        <div className="relative bg-white rounded-lg shadow">
-          <button
-            type="button"
-            className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-            data-modal-hide="popup-modal"
-            onClick={onClose}
-          >
-            <Image src="/close.svg" alt="닫기" width={12} height={12} />
-            <span className="sr-only">Close modal</span>
-          </button>
-          <div className="p-4 md:p-5 text-center">
-            <Image
-              src={product.imageSrc}
-              width={100}
-              height={100}
-              alt="상품사진"
-              className="size-1/2 mx-auto"
-            />
-            <div className="font-bold py-3 text-xl">{product.title}</div>
-            <p className="mx-auto w-3/4 py-4">{product.content}</p>
-            <p className="text-sm text-gray-400">{product.name}</p>
-            <p className="text-sm text-gray-800">{product.price}</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="flex flex-col md:flex-row modal">
+          <div className="w-96 p-4">
+            <div className="h-full justify-evenly flex flex-col">
+              <Image
+                src={product.imageSrc}
+                width={320}
+                height={320}
+                alt="Product Image"
+                className="w-64 h-64 mx-auto mt-6 object-contain"
+              />{' '}
+              <div>
+                <p className="text-sm font-medium text-gray-700 text-center">
+                  {product.name}
+                </p>
+                <p className="text-lg font-bold text-gray-900 text-center">
+                  {product.price}
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <button
-              type="button"
-              className="
-              text-white bg-gray-600 hover:bg-gray-800 
-              focus:ring-4 focus:outline-none focus:ring-gray-300
-              font-medium rounded-lg 
-              text-sm inline-flex items-center px-5 py-2.5 text-center"
-              data-modal-hide="popup-modal"
-              onClick={onClose}
-            >
-              찜하기
-            </button>
-            <button
-              type="button"
-              className="py-2.5 px-5 ms-3 text-sm font-medium 
-              text-gray-900 focus:outline-none bg-white rounded-lg border 
-              border-gray-200 hover:bg-gray-100"
-              onClick={onClose}
-            >
-              닫기
-            </button>
+          <div className="p-6 w-full flex flex-col justify-between">
+            {' '}
+            <div>
+              <button
+                onClick={onClose}
+                className="ml-auto bg-transparent border-none hover:bg-gray-100 p-2 
+                rounded-md text-black float-right"
+              >
+                <Image src="/close.svg" alt="닫기" width={12} height={12} />
+              </button>
+              <div></div>
+              <div className="pt-16 text-center">
+                {' '}
+                <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
+                <p className="text-gray-500 mt-4">{product.content}</p>
+              </div>
+            </div>
+            <div className="flex space-x-4">
+              <div className="flex-1"></div>
+              <div className="flex flex-1 space-between gap-4">
+                <button
+                  className="flex-1 btn-color1 text-white rounded-md py-2 text-sm"
+                  onClick={() => console.log('Add to cart')}
+                >
+                  찜하기
+                </button>
+                <button
+                  className="flex-1 btn-color2 text-white rounded-md py-2 text-sm"
+                  onClick={onClose}
+                >
+                  닫기
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

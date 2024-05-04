@@ -3,10 +3,9 @@
 import Menu from '@/components/menu'
 import React, { useState } from 'react'
 import Modal from '@/components/modal'
-import PageButton from '@/components/pageButton'
 import { useSearchParams } from 'next/navigation'
 import ProductList from '@/components/productList'
-import { Product, products } from '../../hooks/product'
+import { Product, products } from '../../hooks/hooks'
 import Link from 'next/link'
 
 export default function Page() {
@@ -31,7 +30,7 @@ export default function Page() {
   )
 
   return (
-    <div className="bg-white">
+    <div className="bg-color">
       <Menu />
 
       <div className="flex flex-col items-center mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-18 lg:max-w-7xl lg:px-8">
@@ -40,12 +39,13 @@ export default function Page() {
             ? '상품 목록'
             : `"${search}" 검색 결과`}
         </h2>
+
         <div className=" w-full max-w-5xl text-right pb-8">
           <Link
             href="/writing"
             className="
-            text-white font-semibold hover:bg-gray-500
-            rounded-md bg-gray-400 py-3 px-4"
+            text-white font-semibold py-3 px-4
+            rounded-md btn-color2"
           >
             글쓰기
           </Link>
@@ -56,7 +56,6 @@ export default function Page() {
           handleSaveClick={handleSaveClick}
         />
       </div>
-      <PageButton />
 
       <Modal
         isOpen={isModalOpen}

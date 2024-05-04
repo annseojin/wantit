@@ -204,8 +204,8 @@ const Page: React.FC = () => {
 
             <div className="sm:col-span-3 relative">
               <p
-                className="absolute bottom-0 text-xs bg-slate-200 p-0.5 rounded-md hover:bg-slate-300 duration-300
-               font-semibold text-gray-500 cursor-pointer"
+                className="absolute bottom-0 text-xs btn-color1 p-0.5 rounded-md duration-300
+               font-semibold text-white cursor-pointer"
               >
                 중복 확인
               </p>
@@ -330,7 +330,7 @@ const Page: React.FC = () => {
         <div className="mt-6 flex items-center justify-end gap-2 pb-6">
           <Link
             href="/"
-            className="rounded-md bg-gray-400 hover:bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-md"
+            className="rounded-md btn-color1 px-3 py-2 text-sm font-semibold text-white shadow-md"
           >
             취소
           </Link>
@@ -340,7 +340,7 @@ const Page: React.FC = () => {
             data-popover-placement="right"
             onClick={handleSignup}
             type="button"
-            className="rounded-md bg-gray-600 hover:bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-md"
+            className="rounded-md btn-color2 px-3 py-2 text-sm font-semibold text-white shadow-md"
           >
             회원가입
           </button>

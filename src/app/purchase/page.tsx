@@ -35,7 +35,7 @@ const Purchase = () => {
   }, []) // useEffect의 두 번째 매개변수로 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 호출되도록 설정
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#f6f7f3' }}>
       <div className="myPage">
         <h1 className="myPageH1 text-3xl font-bold">My Page</h1>
         <div className="profile">
