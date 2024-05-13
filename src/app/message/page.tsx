@@ -4,15 +4,7 @@ import React, { useState } from 'react'
 import LeftSidebar from '@/components/Lsidebar'
 import ChatArea from '@/components/chatArea'
 import RightSidebar from '@/components/Rsidebar'
-
-interface Message {
-  id: number
-  text: string
-  sender: string
-  name: string
-  profileImg: string
-  imageUrl?: string
-}
+import { Message } from '@/hooks/hooks'
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
@@ -67,17 +59,6 @@ const ChatPage: React.FC = () => {
 
   const handleLeaveRoom = (room: string) => {
     console.log(`Leaving room: ${room}`)
-  }
-
-  const uploadMedia = (file: File) => {
-    const newMessage = {
-      id: messages.length + 1,
-      text: file.name,
-      sender: 'user',
-      name: 'You',
-      profileImg: 'https://via.placeholder.com/48',
-    }
-    setMessages([...messages, newMessage])
   }
 
   return (

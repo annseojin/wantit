@@ -21,9 +21,11 @@ export default function Banner() {
           Want It.
         </h2>
         <p className="mt-6 text-2xl leading-8 text-gray-500">
-          중부대학교 중고거래
+          중부대학교 중고거래 서비스
         </p>
-        <p className="mt-6 text-lg leading-8 text-gray-500">서비스 설명란</p>
+        <p className="mt-6 text-lg leading-8 text-gray-500">
+          중부대학교 재학생들을 위한 중고거래 플랫폼 사이트
+        </p>
       </section>
 
       <section className="mt-6 pt-8 text-lg leading-8 text-gray-300 text-center">

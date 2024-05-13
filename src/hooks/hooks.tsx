@@ -1,5 +1,3 @@
-// productsData.ts
-
 export interface Product {
   title: string
   content: string
@@ -9,6 +7,22 @@ export interface Product {
   price: string
   save?: string
   category: string
+}
+
+export interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  product: any
+}
+
+export interface ChatAreaProps {
+  messages: Message[]
+  sendMessage: (text: string) => void
+  sendMedia: (file: File) => void
+  input: string
+  setInput: (input: string) => void
+  isInitialLoad: boolean
+  deleteMessage: (id: number) => void
 }
 
 export interface Message {

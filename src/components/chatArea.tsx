@@ -1,17 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import MessageModal from './messageModal'
 import Image from 'next/image'
-import { Message } from '@/hooks/hooks'
-
-interface ChatAreaProps {
-  messages: Message[]
-  sendMessage: (text: string) => void
-  sendMedia: (file: File) => void
-  input: string
-  setInput: (input: string) => void
-  isInitialLoad: boolean
-  deleteMessage: (id: number) => void
-}
+import { ChatAreaProps } from '@/hooks/hooks'
 
 const ChatArea: React.FC<ChatAreaProps> = ({
   messages,
@@ -126,47 +116,18 @@ const ChatArea: React.FC<ChatAreaProps> = ({
                   </span>
 
                   {/* 보낸 시간 및 삭제 버튼 배치 */}
-                  <div className="flex justify-between items-center">
-                    {message.sender !== 'user' ? (
-                      <>
-                        <button
-                          onClick={() => {
-                            setSelectedMessageId(message.id)
-                            setShowDeleteModal(true)
-                          }}
-                          className="text-red-500 hover:text-red-700 text-right"
-                        >
-                          X
-                        </button>
-                        <span className="text-xs text-gray-400">
-                          {new Date().toLocaleTimeString('ko-KR', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: false,
-                          })}
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="text-xs text-gray-400">
-                          {new Date().toLocaleTimeString('ko-KR', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            hour12: false,
-                          })}
-                        </span>
-                        <button
-                          onClick={() => {
-                            setSelectedMessageId(message.id)
-                            setShowDeleteModal(true)
-                          }}
-                          className="text-red-500 hover:text-red-700 text-left"
-                        >
-                          X
-                        </button>
-                      </>
-                    )}
-                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedMessageId(message.id)
+                      setShowDeleteModal(true)
+                    }}
+                    className={`text-red-500 hover:text-red-700 ${
+                      message.sender === 'user' ? 'text-right' : 'text-left'
+                    }`}
+                  >
+                    X
+                  </button>
                 </div>
               </div>
             ))}

@@ -25,6 +25,7 @@ export default function RootLayout({
           <div></div>
           <div className="mx-auto bg-color">{children}</div>
         </div>
+
         <UpButton />
         <Footer />
       </body>

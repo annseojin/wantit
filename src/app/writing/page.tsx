@@ -1,11 +1,10 @@
 'use client'
-import { useState, FormEvent, useRef, useEffect } from 'react'
+import { useState, FormEvent, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Page() {
   const [images, setImages] = useState<string[]>([])
-  const [title, setTitle] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string>('')
 
@@ -24,8 +23,8 @@ export default function Page() {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0]
       const fileUrl = URL.createObjectURL(file)
-      setImages((prevImages) => [...prevImages, fileUrl]) // 이미지 URL을 상태 배열에 추가
-      e.target.value = '' // 파일 입력 리셋
+      setImages((prevImages) => [...prevImages, fileUrl])
+      e.target.value = ''
     }
   }
 
@@ -38,7 +37,6 @@ export default function Page() {
     setIsModalOpen(true)
   }
 
-  // 모달 닫기 핸들러
   const closeModal = () => {
     setIsModalOpen(false)
     setSelectedImage('')
@@ -154,7 +152,7 @@ export default function Page() {
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
-          onClick={closeModal} // 모달 배경 클릭 시 모달 닫기
+          onClick={closeModal}
         >
           <div className="bg-white p-4 rounded max-w-sm max-h-full overflow-auto">
             <Image

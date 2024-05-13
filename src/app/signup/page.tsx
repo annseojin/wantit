@@ -189,27 +189,20 @@ const Page: React.FC = () => {
                 htmlFor="id"
                 className="flex text-sm font-medium leading-6 text-gray-900"
               >
-                아이디<p className="text-red-400">*</p>
+                학번<p className="text-red-400">*</p>
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="id"
-                  id="id"
+                  name="studentId"
+                  id="studentId"
                   autoComplete="given-name"
                   className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
-            <div className="sm:col-span-3 relative">
-              <p
-                className="absolute bottom-0 text-xs btn-color1 p-0.5 rounded-md duration-300
-               font-semibold text-white cursor-pointer"
-              >
-                중복 확인
-              </p>
-            </div>
+            <div className="sm:col-span-3 relative"></div>
 
             <div className="sm:col-span-3">
               <label
@@ -286,8 +279,8 @@ const Page: React.FC = () => {
                 <div className="relative flex gap-x-3">
                   <div className="flex h-6 items-center">
                     <input
-                      id="comments"
-                      name="comments"
+                      id="assent1"
+                      style={{ accentColor: '#497649' }}
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600"
                       required
@@ -295,7 +288,7 @@ const Page: React.FC = () => {
                   </div>
                   <div className="text-sm leading-6">
                     <label
-                      htmlFor="comments"
+                      htmlFor="assent1"
                       className="font-medium text-gray-900 flex"
                     >
                       서비스 이용약관 동의<p className="text-red-400">*</p>
@@ -305,8 +298,8 @@ const Page: React.FC = () => {
                 <div className="flex gap-x-3">
                   <div className="flex h-6 items-center">
                     <input
-                      id="candidates"
-                      name="candidates"
+                      id="assent2"
+                      style={{ accentColor: '#497649' }}
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600"
                       required
@@ -314,7 +307,7 @@ const Page: React.FC = () => {
                   </div>
                   <div className="text-sm leading-6">
                     <label
-                      htmlFor="candidates"
+                      htmlFor="assent2"
                       className="font-medium text-gray-900 flex"
                     >
                       개인정보 수집 및 이용 동의

@@ -58,6 +58,9 @@ const BasicProfile = () => {
             <Link href="/profile" className="mb-2">
               프로필 수정
             </Link>
+            <Link href="/addr" className="mb-2">
+              배송지 관리
+            </Link>
           </div>
           <div className="menuShopInfo">
             <h2 className="mt-7 mb-2 text-2xl font-bold">쇼핑 정보</h2>

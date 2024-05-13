@@ -1,13 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState } from 'react'
-
-interface Product {
-  id: number
-  name: string
-  price: string
-  imageUrl: string
-}
+import { Product } from '@/hooks/hooks'
 
 export default function Page() {
   const [products, setProducts] = useState([

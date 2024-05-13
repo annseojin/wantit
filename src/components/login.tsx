@@ -3,11 +3,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
-
-interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-}
+import { ModalProps } from '@/hooks/hooks'
 
 // 모달창 고정
 const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
@@ -24,14 +20,12 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null
 
-  // 모달 닫기
   const handleSignupClick = () => {
     onClose()
   }
 
   return (
     <>
-      {/* 모달창 열릴 시 뒷배경 어둡게 */}
       <div
         className="fixed top-0 left-0 w-full h-full bg-black/50 z-40"
         onClick={onClose}
@@ -83,15 +77,15 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               <form className="space-y-4" action="#">
                 <div>
                   <label
-                    htmlFor="studentNumber"
+                    htmlFor="studentId"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     학번
                   </label>
                   <input
                     type="text"
-                    name="studentNumber"
-                    id="studentNumber"
+                    name="studentId"
+                    id="studentId"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="9xxxxxxx"
                     required
@@ -131,12 +125,13 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       자동 로그인
                     </label>
                   </div>
-                  <a
+                  <Link
+                    onClick={handleSignupClick}
                     href="/forgot"
                     className="text-sm text-green-800 hover:underline"
                   >
                     비밀번호를 잃어버리셨나요?
-                  </a>
+                  </Link>
                 </div>
                 <button
                   type="submit"

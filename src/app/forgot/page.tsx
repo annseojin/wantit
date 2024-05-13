@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import React, { useState } from 'react'
-import axios from 'axios'
 
 const Page: React.FC = () => {
   const [name, setName] = useState('')
@@ -20,21 +19,6 @@ const Page: React.FC = () => {
     }
   }
 
-  const handleSubmit = async () => {
-    try {
-      // 서버로 요청을 보냄
-      const response = await axios.post('/api/find-password', {
-        name,
-        studentId,
-      })
-
-      // 테스트
-      console.log(response.data)
-    } catch (error) {
-      console.error('Error:', error)
-    }
-  }
-
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="text-center flex flex-col gap-8 w-80">
@@ -43,22 +27,26 @@ const Page: React.FC = () => {
         </Link>
         <p className="mb-4 font-bold text-xl">비밀번호 찾기</p>
 
-        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-3">
           <div className="space-y-4">
             <input
               placeholder="이름"
+              id="name"
+              name="name"
               onChange={handleNameChange}
               className="w-full bg-gray-100 hover:bg-gray-200 py-2 px-4 rounded"
             />
           </div>
           <input
             placeholder="학번"
+            id="studentId"
+            name="studentId"
             onChange={handleStudentIdChange}
             className="w-full bg-gray-100 hover:bg-gray-200 py-2 px-4 rounded"
           />
           <button
             type="submit"
-            className="w-full py-2 bg-gray-500 hover:bg-gray-600 
+            className="w-full py-2 btn-color2 
         duration-300 rounded-xl text-white font-bold"
           >
             확인

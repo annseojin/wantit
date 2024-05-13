@@ -90,6 +90,9 @@ const profile = () => {
             </Link>
             <Link href="/profile" className="mb-2">
               프로필 수정
+            </Link>{' '}
+            <Link href="/addr" className="mb-2">
+              배송지 관리
             </Link>
           </div>
           <div className="menuShopInfo">

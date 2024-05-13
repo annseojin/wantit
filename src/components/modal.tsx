@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { useEffect } from 'react'
-
-interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-  product: any
-}
+import { ModalProps } from '@/hooks/hooks'
 
 // 속성값 전달 받기
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product }) => {
@@ -22,28 +17,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product }) => {
     }
   }, [isOpen])
 
-  // 데이터 전송 테스트
   const handleSaveProduct = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/api/product', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(product),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        console.log('Product saved successfully!')
-        onClose()
-      } else {
-        console.log('Error saving product: ' + data.message)
-      }
-    } catch (error) {
-      console.error('Error saving product:', error)
-    }
+    onClose()
   }
 
   if (!isOpen) return null
@@ -94,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, product }) => {
               <div className="flex flex-1 space-between gap-4">
                 <button
                   className="flex-1 btn-color1 text-white rounded-md py-2 text-sm"
-                  onClick={() => console.log('Add to cart')}
+                  onClick={handleSaveProduct}
                 >
                   찜하기
                 </button>
