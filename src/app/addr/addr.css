@@ -4,65 +4,77 @@
   margin-top: -25px;
 }
 
-.addrSet form {
-  display: grid;
-  gap: 10px;
+.addrSetName {
+  text-align: left;
 }
 
-.addrSet form label {
-  font-weight: bold;
-}
-
-.addrSet form input[type='text'] {
+table {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 8px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.addrSet form button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #afc672;
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.addrbt {
+  background-color: #afc672;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s;
 }
 
-.addrSet form button:hover {
+.addrbt:hover {
   background-color: #a1bb5b;
 }
 
-.addrBt {
-  margin-top: 10px;
+.addrbt + button {
   margin-left: 10px;
-  padding: 10px 20px;
-  background: #afc672;
+}
+
+.addrBtCan {
+  background-color: #afc672;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 180px;
-  height: 50px;
+  transition: background-color 0.2s;
+  margin-left: 1.6%;
+  width: 60%;
 }
 
-.addrSet .inputCon {
-  margin-bottom: 20px;
+.addrBtCan:hover {
+  background-color: #a1bb5b;
 }
 
-.addrSet .inputConAdd {
-  margin-bottom: 20px;
-  margin-top: -30px;
+.addAddr {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #afc672;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.2s;
 }
 
-.inputCon select {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 8px;
+.addAddr:hover {
+  background-color: #a1bb5b;
 }

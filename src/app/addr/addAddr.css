@@ -1,0 +1,74 @@
+.addAddrSet {
+  width: 70%;
+  padding: 5%;
+  margin-top: -10px;
+  margin-left: -30px;
+}
+
+.addAddrSet form {
+  display: grid;
+  gap: 10px;
+}
+
+.addAddrSet form label {
+  font-weight: bold;
+}
+
+.addAddrSet form input[type='text'] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.addAddrSet form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #afc672;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: -25px;
+}
+
+.addAddrSet form button:hover {
+  background-color: #a1bb5b;
+}
+
+.addrBt {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #afc672;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 180px;
+  height: 50px;
+}
+
+.addAddrSet .inputCon {
+  margin-bottom: 20px;
+}
+
+.addAddrSet .inputConAdd {
+  margin-bottom: 20px;
+  margin-top: -30px;
+}
+
+.inputCon select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.addAddrSetName {
+  text-align: left;
+}

@@ -18,6 +18,7 @@ export default function Page() {
 
   // 동적 라우팅 주소랑 카테고리와 값을 비교해서 상품 띄우고
   // 쿼리값을 받아서 타이틀에 포함되면 해당 상품 목록 띄우기
+
   useEffect(() => {
     if (path) {
       const filtered = search

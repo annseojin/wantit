@@ -31,6 +31,29 @@
   text-align: left;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.header h3 {
+  flex: 1;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.header1 {
+  margin-left: -50px;
+}
+
+.header3 {
+  margin-left: 25px;
+}
+
 .purchaseDate {
   margin-left: auto;
   font-size: 14px;

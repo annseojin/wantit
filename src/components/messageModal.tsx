@@ -1,11 +1,5 @@
 import React from 'react'
-
-interface MessageModalProps {
-  show: boolean
-  handleMessage: (confirmed: boolean) => void
-  message: string
-  actionLabel: string
-}
+import { MessageModalProps } from '@/hooks/hooks'
 
 const MessageModal: React.FC<MessageModalProps> = ({
   show,

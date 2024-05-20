@@ -15,6 +15,18 @@ export interface ModalProps {
   product: any
 }
 
+export interface MessageModalProps {
+  show: boolean
+  handleMessage: (confirmed: boolean) => void
+  message: string
+  actionLabel: string
+}
+
+export interface ProductListProps {
+  products: Product[]
+  handleSaveClick: (product: Product) => void
+}
+
 export interface ChatAreaProps {
   messages: Message[]
   sendMessage: (text: string) => void

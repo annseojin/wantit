@@ -86,7 +86,7 @@ const Purchase = () => {
             </Link>
             <Link href="/profile" className="mb-2">
               프로필 수정
-            </Link>{' '}
+            </Link>
             <Link href="/addr" className="mb-2">
               배송지 관리
             </Link>
@@ -142,6 +142,12 @@ const Purchase = () => {
             </div>
           </div>
 
+          <div className="header">
+            <h3 className="header1">상품</h3>
+            <h3 className="header2">상품명</h3>
+            <h3 className="header3">구매일자</h3>
+            <h3 className="header4">구매상태</h3>
+          </div>
           <div>
             {purchaseHistory.length > 0 ? (
               <div>

@@ -1,18 +1,5 @@
 import Link from 'next/link'
 
-const links = [
-  { name: 'Open roles', href: '#' },
-  { name: 'Internship program', href: '#' },
-  { name: 'Our values', href: '#' },
-  { name: 'Meet our leadership', href: '#' },
-]
-const stats = [
-  { name: 'Offices worldwide', value: '12' },
-  { name: 'Full-time colleagues', value: '300+' },
-  { name: 'Hours per week', value: '40' },
-  { name: 'Paid time off', value: 'Unlimited' },
-]
-
 export default function Banner() {
   return (
     <div>
@@ -31,7 +18,7 @@ export default function Banner() {
       <section className="mt-6 pt-8 text-lg leading-8 text-gray-300 text-center">
         <button className="btn-color2 justify-center p-3 border-1 rounded-lg">
           <Link
-            href="/product"
+            href="/"
             className="text-white text-lg font-bold px-2 hover:text-gray-400"
           >
             앱 다운로드

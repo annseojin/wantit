@@ -30,6 +30,7 @@ const Page: React.FC = () => {
         <form className="flex flex-col gap-3">
           <div className="space-y-4">
             <input
+              required
               placeholder="이름"
               id="name"
               name="name"
@@ -38,6 +39,7 @@ const Page: React.FC = () => {
             />
           </div>
           <input
+            required
             placeholder="학번"
             id="studentId"
             name="studentId"

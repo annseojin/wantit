@@ -1,11 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Product } from '@/hooks/hooks'
-
-interface ProductListProps {
-  products: Product[]
-  handleSaveClick: (product: Product) => void
-}
+import { ProductListProps } from '@/hooks/hooks'
 
 const ProductList: React.FC<ProductListProps> = ({
   products,

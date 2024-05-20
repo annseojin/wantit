@@ -95,7 +95,7 @@ const Sell = () => {
             </Link>
             <Link href="/profile" className="mb-2">
               프로필 수정
-            </Link>{' '}
+            </Link>
             <Link href="/addr" className="mb-2">
               배송지 관리
             </Link>
@@ -116,7 +116,6 @@ const Sell = () => {
 
         <div className="purchase">
           <h1 className="editInfo text-2xl font-bold mb-6">판매 내역</h1>
-          {/* 판매 내역 탭 및 목록 */}
           <div className="tab-container">
             <div className="tab-box" onClick={() => handleTabClick('all')}>
               <div
@@ -151,8 +150,12 @@ const Sell = () => {
               </div>
             </div>
           </div>
-
-          {/* 선택된 탭에 따라 판매 내역 필터링하여 표시 */}
+          <div className="header">
+            <h3 className="header1">상품</h3>
+            <h3 className="header2">상품명</h3>
+            <h3 className="header3">구매일자</h3>
+            <h3 className="header4">구매상태</h3>
+          </div>
           <div>
             {sellHistory.map((item, index) => {
               if (
