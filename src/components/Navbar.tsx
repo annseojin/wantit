@@ -1,25 +1,22 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useState } from 'react'
-import Login from '@/components/login'
+import Link from 'next/link';
+import { useState } from 'react';
+import Login from '@/components/login';
 
 export default function Navbar() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   return (
-    <nav
-      className="sticky flex justify-between items-center 
-     px-8 py-4 header-color"
-    >
+    <nav className="sticky flex justify-between items-center px-8 py-4 header-color">
       <Link
         href="/"
         className="text-white text-2xl font-bold duration-300 hover:text-gray-400"
@@ -64,5 +61,5 @@ export default function Navbar() {
         {isModalOpen && <Login onClose={closeModal} isOpen={isModalOpen} />}
       </div>
     </nav>
-  )
+  );
 }

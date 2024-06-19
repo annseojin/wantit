@@ -9,7 +9,7 @@ export default function Home() {
         <Banner />
       </div>
       <main className="bg-white">
-        <section className="max-w-3xl mx-auto py-8">
+        <section className="max-w-3xl mx-auto py-8 min-h-dvh">
           <h1 className="font-black text-4xl py-16">중고거래 시작하기</h1>
           <div className="flex justify-between">
             <div className="flex-1">
@@ -59,9 +59,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="bg-color min-h-80">
-          <div className="mx-auto max-w-5xl"></div>
         </section>
       </main>
     </>

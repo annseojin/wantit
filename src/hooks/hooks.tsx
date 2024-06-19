@@ -1,50 +1,108 @@
+import { useState, useEffect } from 'react';
+import { io, Socket } from 'socket.io-client';
+
+const socket: Socket = io('http://localhost:3000'); // 백엔드 서버 주소
+
 export interface Product {
-  title: string
-  content: string
-  name: string
-  imageSrc: string
-  imageAlt: string
-  price: string
-  save?: string
-  category: string
+  title: string;
+  content: string;
+  name: string;
+  imageSrc: string;
+  imageAlt: string;
+  price: string;
+  save?: string;
+  category: string;
 }
 
 export interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-  product: any
+  isOpen: boolean;
+  onClose: () => void;
+  product: Product;
 }
 
 export interface MessageModalProps {
-  show: boolean
-  handleMessage: (confirmed: boolean) => void
-  message: string
-  actionLabel: string
+  show: boolean;
+  handleMessage: (confirmed: boolean) => void;
+  message: string;
+  actionLabel: string;
 }
 
 export interface ProductListProps {
-  products: Product[]
-  handleSaveClick: (product: Product) => void
+  products: Product[];
+  handleSaveClick: (product: Product) => void;
 }
 
 export interface ChatAreaProps {
-  messages: Message[]
-  sendMessage: (text: string) => void
-  sendMedia: (file: File) => void
-  input: string
-  setInput: (input: string) => void
-  isInitialLoad: boolean
-  deleteMessage: (id: number) => void
+  messages: Message[];
+  sendMessage: (text: string) => void;
+  sendMedia: (file: File) => void;
+  input: string;
+  setInput: (input: string) => void;
+  isInitialLoad: boolean;
+  deleteMessage: (id: number) => void;
 }
 
 export interface Message {
-  id: number
-  text: string
-  sender: string
-  name: string
-  profileImg: string
-  imageUrl?: string
+  id: number;
+  text: string;
+  imageUrl?: string;
 }
+
+export const useChat = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    //초기 메세지 수신
+    socket.on('initial messages', (initialMessages: Message[]) => {
+      setMessages(initialMessages);
+      setLoading(false); // 로딩 상태 업데이트
+    });
+
+    socket.on('receive message', (message: Message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
+    });
+
+    socket.on('message deleted', (id: number) => {
+      setMessages((prevMessages) =>
+        prevMessages.filter((message) => message.id !== id)
+      );
+    });
+
+    return () => {
+      socket.off('initial messages');
+      socket.off('receive message');
+      socket.off('message deleted');
+    };
+  }, []);
+
+  const sendMessage = (text: string) => {
+    const message: Message = {
+      id: Date.now(),
+      text,
+    };
+    socket.emit('send message', message);
+  };
+
+  const sendMedia = (media: File) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const message: Message = {
+        id: Date.now(),
+        text: '',
+        imageUrl: reader.result as string,
+      };
+      socket.emit('send message', message);
+    };
+    reader.readAsDataURL(media);
+  };
+
+  const deleteMessage = (id: number) => {
+    socket.emit('delete message', id);
+  };
+
+  return { messages, sendMessage, sendMedia, deleteMessage, loading };
+};
 
 export const products: Product[] = [
   {
@@ -120,4 +178,4 @@ export const products: Product[] = [
     save: '찜하기',
     category: 'other',
   },
-]
+];

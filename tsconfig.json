@@ -37,7 +37,8 @@
     "src/app/save/page.tsx",
     "src/app/search/page.tsx",
     "src/app/layout.tsx",
-    "node_modules/@sendbird/uikit-react/index.d.ts"
-  ],
+    "node_modules/@sendbird/uikit-react/index.d.ts",
+    "schema/index.tsx"
+, "src/app/chat/page.tsx"  ],
   "exclude": ["node_modules"]
 }

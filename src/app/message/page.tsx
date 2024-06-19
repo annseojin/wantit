@@ -1,69 +1,37 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import LeftSidebar from '@/components/Lsidebar'
-import ChatArea from '@/components/chatArea'
-import RightSidebar from '@/components/Rsidebar'
-import { Message } from '@/hooks/hooks'
+import React, { useEffect, useState } from 'react';
+import ChatArea from '@/components/chatArea';
+import RightSidebar from '@/components/Rsidebar';
+import { useChat } from '@/hooks/hooks';
 
 const ChatPage: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: '메시지1',
-      sender: 'user',
-      name: '나',
-      profileImg: 'https://via.placeholder.com/48',
-    },
-    {
-      id: 2,
-      text: '메시지2',
-      sender: 'assistant',
-      name: '상대방1',
-      profileImg: 'https://via.placeholder.com/48',
-    },
-  ])
-  const [input, setInput] = useState<string>('')
-  const isInitialLoad = true
+  //useChat 훅에서 반환된 값들을 할당
+  const { messages, sendMessage, sendMedia, deleteMessage, loading } =
+    useChat();
+  const [input, setInput] = useState<string>(''); // 입력값을 관리하는 상태
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true); // 초기 로딩 상태를 관리하는 상태
 
-  const sendMessage = (text: string) => {
-    if (input.trim() !== '') {
-      const newMessage = {
-        id: messages.length + 1,
-        text: input,
-        sender: 'user',
-        name: 'You',
-        profileImg: 'https://via.placeholder.com/48',
-      }
-      setMessages([...messages, newMessage])
-      setInput('')
+  // 로딩 상태가 변경될 때마다 초기 로딩 상태 업데이트
+  useEffect(() => {
+    if (!loading) {
+      setIsInitialLoad(false);
     }
-  }
-
-  const sendMedia = (file: File) => {
-    // handle sending a media file
-    const newMessage: Message = {
-      id: messages.length + 1,
-      text: '',
-      sender: 'user',
-      name: 'You',
-      profileImg: 'https://via.placeholder.com/48',
-      imageUrl: URL.createObjectURL(file),
-    }
-    setMessages([...messages, newMessage])
-  }
-
-  const deleteMessage = (id: number) => {
-    setMessages(messages.filter((message) => message.id !== id))
-  }
+  }, [loading]);
 
   const handleLeaveRoom = (room: string) => {
-    console.log(`Leaving room: ${room}`)
-  }
+    console.log('Leaving the room:', room);
+    // 방을 나가는 로직 추가
+  };
 
+  const handleJoinRoom = (room: string) => {
+    console.log('Joining the room:', room);
+    // 방을 입장하는 로직 추가
+  };
+
+  // UI 렌더링
   return (
     <div className="bg-color h-screen flex max-w-7xl mx-auto">
-      <LeftSidebar handleLeaveRoom={handleLeaveRoom} />
       <ChatArea
         messages={messages}
         sendMessage={sendMessage}
@@ -75,7 +43,7 @@ const ChatPage: React.FC = () => {
       />
       <RightSidebar />
     </div>
-  )
-}
+  );
+};
 
-export default ChatPage
+export default ChatPage;
